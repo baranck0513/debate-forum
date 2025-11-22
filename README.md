@@ -131,7 +131,7 @@ Complex relational schema featuring:
 - Authentication vs Authorisation
 - Secure password handling considerations
 
-## Running the Project
+## 🚀 Running the Project
 `# Install dependencies`
 
 `pip install flask`
@@ -146,7 +146,7 @@ Complex relational schema featuring:
 
 `# Access at http://localhost:5000`
 
-## Things to Consider
+## 🤔 Things to Consider
 - Passwords are currently stored as plain text
 - Reply-to-reply functionality is implemented in the backend but not fully displayed in the UI
 - The application uses SQLite's Julian time format for timestamps
