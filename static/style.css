@@ -1,0 +1,282 @@
+/* for the whole website */
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #004f4f;
+}
+/* for the whole website */
+
+/* for the body */
+body {
+    background-color: white; 
+    font-family: Verdana, sans-serif;
+}
+/* for the body */
+
+.navbar {
+    background: #D4AA00; 
+    padding: 10px 15px;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* banner logo */
+.logo a {
+    color: #008080;
+    font-size: 35px;
+    font-weight: 600;
+}
+/* banner logo */
+
+li {
+    list-style: none;
+    display: inline-block;
+}
+
+li a {
+    color: #008080; 
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/* banner  */
+.banner {
+    background-color: #D4AA00;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.banner h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* add topic button */
+.add-topic-container {
+    text-align: center;
+    margin-top: 10px; /* space under banner title */
+}
+
+/* topics */
+.topics-section {
+    background-color: white;
+    padding: 20px;
+}
+
+.topics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* three topics in one line on home page */
+    gap: 15px; /* space between bubbles */
+    justify-content: center;
+    padding: 20px;
+}
+
+.topic-bubble {
+    background-color: white;
+    color: #008080; 
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid black;
+    text-decoration: none;
+}
+
+.topic-bubble:hover {
+    background-color: #008080;
+    color: white;
+}
+
+/* button style */
+.button {
+    background-color: #008080; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    border: none; 
+    font-size: 15px; 
+    font-weight: bold; 
+    text-align: center; 
+    cursor: pointer; 
+    display: inline-block; 
+    text-decoration: none; 
+}
+
+#add-topic-button {
+    background-color: #008080; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    border: none; 
+    font-size: 15px; 
+    font-weight: bold; 
+    text-align: center; 
+    cursor: pointer; 
+    display: inline-block; 
+    text-decoration: none; 
+} 
+
+#add-claim-button {
+    background-color: #008080; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    border: none; 
+    font-size: 15px; 
+    font-weight: bold; 
+    text-align: center; 
+    cursor: pointer; 
+    display: inline-block; 
+    text-decoration: none; 
+} 
+
+#add-reply-button {
+    background-color: #008080; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    border: none; 
+    font-size: 15px; 
+    font-weight: bold; 
+    text-align: center; 
+    cursor: pointer; 
+    display: inline-block; 
+    text-decoration: none; 
+} 
+
+.close-button {
+    background-color: #008080; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    border: none; 
+    font-size: 15px; 
+    font-weight: bold; 
+    text-align: center; 
+    cursor: pointer; 
+    display: inline-block; 
+    text-decoration: none; 
+}
+
+/* pop up */
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    position: relative;
+    width: 500px;
+    background-color: white; 
+    padding: 20px;
+    border-radius: 10px; 
+    text-align: center;
+    border: 3px solid black;
+}
+
+textarea {
+    width: 300px;
+    height: 150px;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid #003366;
+    box-sizing: border-box;
+}
+
+input{
+    width: 450px; 
+    height: 55px;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid #003366;
+}
+
+/* claims */
+.claims-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.claim_box {
+    background-color: #ffffff; 
+    padding: 20px;
+    margin: 20px auto;
+    width: 100%;
+    border: 3px solid #003366;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.claim_box h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.claim_box p {
+    font-size: 15px;
+}
+/* claims */
+
+/* radio buttons  */
+.radio_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="radio"] {
+    width: 15px;
+    height: 15px;
+}
+/* radio buttons */
+
+/* reply boxes */
+.reply_box {
+    background-color: #ffffff; 
+    padding: 20px;
+    margin: 20px auto;
+    width: 100%; 
+    border: 3px solid black; 
+    border-radius: 10px; 
+    text-align: left;
+}
+
+.reply_box p {
+    font-size: 15px;
+}
+/* reply boxes */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin-left: 20px;
+    border-left: 2px solid #ddd;
+    padding-left: 10px;
+}
+
+input[type="checkbox"] {
+    width: 20px; 
+    height: 20px; 
+}

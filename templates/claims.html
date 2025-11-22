@@ -1,0 +1,70 @@
+<!-- CLAIMS PAGE for a Topic -->
+
+{% extends "layout.html" %}
+
+{% block title %}{{ topic_name }} - TeLL{% endblock %}
+
+{% block content %}
+<section class="banner">
+    <h1>{{ topic_name }}</h1>
+    <p><strong>Topic posted by:</strong> {{ topic_creator }}</p>
+    <br>
+    <p><strong>Topic posted at:</strong> {{ topic_creationTime }}</p>
+    <br>
+    <br>
+    <button id="add-claim-button" class="button">+ Add Claim to this Topic</button>
+</section>
+
+<br>
+
+<div class="popup" id="add-claim-popup" style="display: none;">
+    <div class="popup-content">
+        <button class="close-button" style="float: right;">X</button>
+        <form id="add-claim-form">
+            <h2>Add Claim to This Topic</h2>
+            <br>
+            <input type="hidden" name="topic_name" value="{{ topic_name }}"> <!--sending topic name-->
+            <textarea name="claim_text" placeholder="Claim text" required></textarea>
+
+            <br>
+            <br>
+
+            <div>
+                <p>Which claims do you want this claim to be related with?</p>
+                <br>
+                <input type="checkbox" id="NoneClaimRelation" name="claim_relation" value="No">
+                <label for="NoneClaimRelation"><strong>None of them</strong></label>
+                <br>
+                <br>
+                {% for claim in claims %}
+                    <input type="checkbox" id="ClaimRelation{{ claim.id }}" name="claim_relation_checkbox" value="ClaimRelation">
+                    <label for="ClaimRelation{{ claim.id }}"><strong>Claim Title: {{ topic_name }} - {{ claim.id }}</strong></label>
+                    <br>
+                {% endfor %}
+            </div>            
+
+            <br>
+            <br>
+
+            <button type="submit" class="button">Post Claim</button>
+        </form>
+    </div>
+</div>
+
+{% if claims %}
+    {% for claim in claims %}
+        <div class="claim_box">
+            <a href="{{ url_for('claim', claim_id=claim.id) }}">
+            <h1>Claim Title: {{ topic_name }} - {{ claim.id }}</h1>    
+            <p><strong>Claim Text:</strong> {{ claim.text }}</p>
+            <br>
+            <hr>
+            <br>
+            <p><strong>Claim Posted by:</strong> {{ claim.username }}</p>
+            <p><strong>Claim Posted at:</strong> {{ claim.creationTime }}</p>
+            </a>          
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

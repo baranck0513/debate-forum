@@ -1,0 +1,36 @@
+<!-- HOME PAGE -->
+
+{% extends "layout.html" %}
+
+{% block title %}Home Page - TeLL{% endblock %}
+
+{% block content %}
+<section class="banner">
+    <h1>List of Topics</h1>
+    <button id="add-topic-button" class="topic-bubble">+ Add Topic</button>
+    
+    <div class="popup" id ="add-topic-popup" style="display: none;">
+        <div class="popup-content">
+            <button class="close-button" style="float:right;">X</button>
+            <form id ="add-topic-form">
+                <h2>Add a Topic</h2>
+                <br>
+                <textarea name="topic_text" placeholder="Topic Name" required></textarea>
+                <br>
+                <br>
+                <button type="submit" class="button">Post Topic</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="topics-section">
+    <div class="topics">
+        {% for topic in allTopics %}
+            <a href="{{ url_for('claims', topic_name=topic) }}" class="topic-bubble">{{ topic }}</a>
+        {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}

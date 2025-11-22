@@ -1,0 +1,67 @@
+<!-- BASE STRUCTURE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- device size -->
+  <title>{% block title %}TeLL{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navdiv">
+        <div class="logo"><a href="{{ url_for('home') }}">TeLL</a></div>
+        <ul>
+            <a href="#" class="button" id="log-in">{% if username %}Log Out{% else %}Log In{% endif %}</a>
+            {% if username %}
+              <p class="display-username">Username: {{username}}</p>
+            {% endif %}
+        </ul>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <!-- popup form -->
+  <div class="popup" id="popup-form">
+    <div class="popup-content">
+        <button class="close-button" style="float: right;">X</button> <!-- close button -->
+        <!-- login form -->
+        <div id="login-form" class="form">
+            <h2>Log In</h2>
+            <br>
+            <p style="text-align: left;"><strong>Username</strong></p>
+            <input type="text" placeholder="Username" required>
+            <p style="text-align: left;"><strong>Password</strong></p>
+            <input type="password" placeholder="Password" required>
+            <a href="#" class="button">Log In</a>
+            <br>
+            <br>
+            <p>Create an account: <a href="#" id="sign-up-link">Sign up</a></p>
+        </div>
+        
+        <!-- signup form -->
+        <div id="sign-up-form" class="form" style="display: none;">
+            <h2>Sign Up</h2>
+            <br>
+            <p style="text-align: left;"><strong>Username</strong></p>
+            <input type="text" placeholder="Username" required>
+            <p style="text-align: left;"><strong>Password</strong></p>
+            <input type="password" placeholder="Password" required>
+            <a href="#" class="button">Sign Up</a>
+        </div>
+
+        <!-- displaying topic form -->
+        <form id="add-topic-form" style="display: none;">
+          <h2>Post a New Topic</h2>
+          <textarea name="topic_name" placeholder="Topic Name" required></textarea>
+          <button class="button">Post Topic</button>
+        </form>
+    </div>
+  </div>
+
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

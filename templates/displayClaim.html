@@ -1,0 +1,147 @@
+<!-- CLAIM PAGE-->
+
+{% extends "layout.html" %}
+
+{% block title %}Claim Details - TeLL{% endblock %}
+
+{% block content %}
+
+<!-- banner -->
+<section class="banner">
+    <h1>Claim Title: {{ topic_name }} - {{ claim_id }}</h1>
+    <h2>Claim Text: {{ claim_text }}</h2>
+    <br>
+    <h3>Claim Posted by: {{ claim_username }}</h3>
+    <br>
+    <h3>Claim Posted at: {{ creationTime }}</h3>
+    <br>
+    <br>
+    <button id="add-reply-button" class="topic-bubble">+ Add Reply to this Claim</button>
+</section>
+
+<!-- reply form -->
+<div class="popup" id="add-reply-popup" style="display: none;">
+    <div class="popup-content">
+        <button class="close-button" style="float: right;">X</button>
+        <form id="add-reply-form">
+            <h2>Add a Reply to this Claim</h2>
+            <br>
+            <input type="hidden" name="claim_id" value="{{ claim_id }}">
+            <textarea name="reply_text" placeholder="Reply text" required></textarea>
+            <br>
+            <br>
+            <div class="radio_buttons">
+                <div>
+                    <input type="radio" id="clarification" name="reply_type" value="Clarification" required>
+                    <label for="clarification">Clarification</label>
+                </div>
+                <div>
+                    <input type="radio" id="supporting_argument" name="reply_type" value="Supporting Argument" required>
+                    <label for="supporting_argument">Supporting Argument</label>
+                </div>
+                <div>
+                    <input type="radio" id="counter_argument" name="reply_type" value="Counter Argument" required>
+                    <label for="counter_argument">Counter Argument</label>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="button">Post Reply</button>
+        </form>
+    </div>
+</div>
+
+<!-- reply to reply form -->
+<div class="popup" id="add-reply-to-reply-popup" style="display: none;">
+    <div class="popup-content">
+        <button class="close-button" style="float: right;">X</button>
+        <form id="add-reply-to-reply-form">
+            <h2>Add a Reply to this Reply</h2>
+            <input type="hidden" id="parent-reply-id" name="parent_reply_id" value="">
+            <textarea name="reply_to_reply_text" placeholder="Reply to Reply text" required></textarea>
+            <div class="radio_buttons">
+                <div>
+                    <input type="radio" id="evidence" name="reply_type" value="Evidence" required>
+                    <label for="evidence">Evidence</label>
+                </div>
+                <div>
+                    <input type="radio" id="support" name="reply_type" value="Support" required>
+                    <label for="support">Support</label>
+                </div>
+                <div>
+                    <input type="radio" id="rebuttal" name="reply_type" value="Rebuttal" required>
+                    <label for="rebuttal">Rebuttal</label>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="button">Post Reply to this Reply</button>
+            <br>
+            <br>
+            <p><strong>Note for teacher: Reply to Reply is submitted and saved into database, but it is not displayed on the website.</strong></p>
+        </form>
+    </div>
+</div>
+
+<!-- replies Section -->
+<section class="replies-section">
+    <br>
+    <h2 style="text-align: center;">Replies to this Claim</h2>
+    <br>
+    {% if replies %}
+        <!-- display clarifications -->
+        <h3 style="text-align: center;">Clarifications</h3> <!-- centering at top -->
+        {% for reply in replies %}
+            {% if reply.replyToClaimRelType == 1 %}
+            <div class="reply_box">
+                <p><strong>Reply Type:</strong> Clarification</p>
+                <p><strong>Reply Text:</strong> {{ reply.text }}</p>
+                <p><strong>Posted by:</strong> {{ reply.username }}</p>
+                <p><strong>Posted at:</strong> {{ reply.creationTime }}</p>
+                <br>
+                <button class="add-reply-to-reply-button topic-bubble" reply_text_id="{{ reply.replyTextID }}">+ Add Reply to this Reply</button>
+
+                
+            </div>
+            {% endif %}
+        {% endfor %}
+        <br>
+        <hr>
+        <br>
+
+        <!-- displaying supportingarguments -->
+        <h3 style="text-align: center;">Supporting Arguments</h3> <!-- centering at top -->
+        {% for reply in replies %}
+            {% if reply.replyToClaimRelType == 2 %}
+            <div class="reply_box">
+                <p><strong>Reply Type:</strong> Supporting Argument</p>
+                <p><strong>Reply Text:</strong> {{ reply.text }}</p>
+                <p><strong>Posted by:</strong> {{ reply.username }}</p>
+                <p><strong>Posted at:</strong> {{ reply.creationTime }}</p>
+                <br>
+                <button class="add-reply-to-reply-button topic-bubble" reply_text_id="{{ reply.replyTextID }}">+ Add Reply to this Reply</button>
+            </div>
+            {% endif %}
+        {% endfor %}
+        <br>
+        <hr>
+        <br>
+
+        <!-- displaying counterarguments -->
+        <h3 style="text-align: center;">Counter Arguments</h3> <!-- centering at top -->
+        {% for reply in replies %}
+            {% if reply.replyToClaimRelType == 3 %}
+            <div class="reply_box">
+                <p><strong>Reply Type:</strong> Counter Argument</p>
+                <p><strong>Reply Text:</strong> {{ reply.text }}</p>
+                <p><strong>Posted by:</strong> {{ reply.username }}</p>
+                <p><strong>Posted at:</strong> {{ reply.creationTime }}</p>
+                <br>
+                <button class="add-reply-to-reply-button topic-bubble" reply_text_id="{{ reply.replyTextID }}">+ Add Reply to this Reply</button>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+# Database files
+*.sqlite
+*.db
+
+# Python
+*.pyc
+__pycache__/
+venv/
+
+# Environment
+.env
+pyvenv.cfg
+
+# Compiled
+app_cpython-312.pyc
